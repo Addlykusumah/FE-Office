@@ -9,14 +9,14 @@ export const officeSpaces: OfficeSpace[] = [
     location: "Jakarta Pusat",
     rating: 4.5,
     address:"Dekat Gedung BWA HQ di jakarta no 102939",
-    image: "/assets/images/thumbnails/thumbnails-1.png",
+    image: "/assets/images/thumbnails/thumbnails-2.png",
     images: [
       "/assets/images/thumbnails/thumbnail-details-1.png",
       "/assets/images/thumbnails/thumbnail-details-2.png",
     ],
-    tags: ["Popular"],
+    tags: ["Popular","Cheaper"],
     about: "wheter you need quiet space to focus or a collaborative environment to brainstorm with your team, we have the perfect solution for you.",
-    features: ['Global Event', 'Privacy', 'Free Move', 'sustainbility','Extra Snacks', 'Compact' ], 
+    features: ['Global Event', 'High Speed Wifi' ,'Privacy', 'Free Move', 'sustainbility','Extra Snacks', 'Compact' ], 
     isFullyBooked: false,
     salesContacts: [
       {
@@ -31,6 +31,7 @@ export const officeSpaces: OfficeSpace[] = [
   }
 ],
   },
+
 
 {
     id: 2,
@@ -48,7 +49,7 @@ export const officeSpaces: OfficeSpace[] = [
     ],
     tags: ["Popular"],
     about: "wheter you need quiet space to focus or a collaborative environment to brainstorm with your team, we have the perfect solution for you.",
-    features: ['Global Event', 'Privacy', 'Free Move', 'sustainbility','Extra Snacks', 'Compact' ], 
+    features: ['Global Event', 'High Speed Wifi' , 'Privacy', 'Free Move', 'sustainbility','Extra Snacks', 'Compact' ], 
     isFullyBooked: false,
     salesContacts: [
       {
