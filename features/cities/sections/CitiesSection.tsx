@@ -1,4 +1,8 @@
+"use client";
+
+import { Swiper, SwiperSlide } from "swiper/react";
 import CityCard from "../components/citycard";
+import { cities } from "../data/cities.mock";
 
 export default function CitiesSection() {
   return (
@@ -8,20 +12,28 @@ export default function CitiesSection() {
           You Can Choose <br />
           Our Favorite Cities
         </h2>
-        <a
-          href="#"
-          className="rounded-full rounded-full py-3 px-5 bg-white font-bold"
-        >
+        <a href="#" className=" rounded-full py-3 px-5 bg-white font-bold">
           Explore All City
         </a>
       </div>
-      <div className="swiper w-full">
+      <Swiper
+        spaceBetween={30}
+        slidesOffsetAfter={30}
+        slidesOffsetBefore={30}
+        slidesPerView="auto"
+        className="swiper w-full"
+      >
         <div className="swiper-wrapper">
-          <div className="swiper-slide !w-fit first-of-type:pl-[calc((100%-1130px-60px)/2)] last-of-type:pr-[calc((100%-1130px-60px)/2)]">
-            <CityCard />
-          </div>
+          {cities.map((city) => (
+            <SwiperSlide
+              key={city.id}
+              className="swiper-slide !w-fit first-of-type:pl-[calc((100%-1130px-60px)/2)] last-of-type:pr-[calc((100%-1130px-60px)/2)]"
+            >
+              <CityCard city={city} />
+            </SwiperSlide>
+          ))}
         </div>
-      </div>
+      </Swiper>
     </section>
   );
 }
