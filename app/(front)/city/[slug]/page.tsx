@@ -1,8 +1,23 @@
-import FreshspaceCity from "@/components/FreshspaceCity";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
+import { cities } from "@/features/cities/data/cities.mock";
+import { notFound } from "next/navigation";
+import { officeSpaces } from "@/features/offices/data/officeSpaces.mock";
+import OficeSpaceCard from "@/features/offices/components/OfficeSpaceCard";
 
-export default function CityPage() {
+type Props = {
+  params: { slug: string };
+};
+
+export default function CityPage({ params }: Props) {
+  const city = cities.find((c) => c.slug === params.slug);
+
+  if (!city) return notFound();
+
+  const cityOffices = officeSpaces.filter(
+    (space) => space.location === city.name
+  );
+
   return (
     <>
       <Navbar />
@@ -14,7 +29,7 @@ export default function CityPage() {
           >
             <h1 className="font-extrabold text-[50px] leading-[60px]">
               Great Office in <br />{" "}
-              <span className="text-[#0D903A]">Jakarta Pusat City</span>
+              <span className="text-[#0D903A]">{city.name}</span>
             </h1>
             <p className="text-lg leading-8 text-[#000929]">
               Kantor yang tepat dapat memberikan impact pekerjaan menjadi lebih
@@ -34,7 +49,27 @@ export default function CityPage() {
           </div>
         </section>
       </header>
-      <FreshspaceCity />
+      <section
+        id="Fresh-Space"
+        className="flex flex-col gap-[30px] w-full max-w-[1130px] mx-auto mt-[70px] mb-[120px]"
+      >
+        <h2 className="font-bold text-[32px] leading-[48px] text-nowrap">
+          Browse Offices
+        </h2>
+
+        {cityOffices.length > 0 ? (
+          <div className="grid grid-cols-3 gap-[30px]">
+            {cityOffices.map((space) => (
+              <OficeSpaceCard key={space.id} space={space} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-gray-500">
+            No office spaces available in this city.
+          </p>
+        )}
+
+      </section>
     </>
   );
 }
